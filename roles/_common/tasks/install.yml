@@ -80,7 +80,7 @@
 
     - name: "Verify checksum of {{ __common_binary_basename }}"
       run_once: true
-      when: (_common_checksums_url)
+      when: (_common_checksums_url and not ansible_check_mode)
       block:
         - name: "Fetch checksum list for {{ __common_binary_basename }}"
           ansible.builtin.uri:
